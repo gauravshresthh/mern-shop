@@ -4,6 +4,7 @@ import {
 	BrowserRouter as Router,
 	Route,
 	Switch,
+	Redirect,
 } from 'react-router-dom';
 
 import Header from './components/Header';
@@ -26,46 +27,44 @@ const App = () => {
 				<main className='main'>
 					<Switch>
 						<Route
-							path='/'
+							path='/product/:id'
 							component={
-								HomePage
+								ProductPage
 							}
-							exact
 						/>
 						<Route
 							path='/signin'
 							component={
 								SignInPage
 							}
-							exact
 						/>
 						<Route
 							path='/register'
 							component={
 								RegisterPage
 							}
-							exact
 						/>
 						<Route
 							path='/about'
 							component={
 								AboutPage
 							}
-							exact
 						/>
+
 						<Route
-							path='/product/:id'
-							component={
-								ProductPage
-							}
-							exact
-						/>
-						<Route
-							path='*'
+							path='/not-found'
 							component={
 								ErrorPage
 							}
 						/>
+						<Route
+							path='/'
+							component={
+								HomePage
+							}
+							exact
+						/>
+						<Redirect to='/not-found' />
 					</Switch>
 				</main>
 			</Container>
